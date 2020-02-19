@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EsoftMobile.MainPage" BackgroundColor="#ece6e6">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TodayButton" TargetType="Button">
+                <Style.Triggers>
+                    <Trigger Property="IsPressed" Value="True" TargetType="Button" >
+                        <Setter Property="TextColor" Value="White" />
+                        <Setter Property="BackgroundColor" Value="#3eb5f1" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="VsButton" TargetType="Button" >
+                <Style.Triggers>
+                    <Trigger Property="IsPressed" Value="True" TargetType="Button">
+                        <Setter Property="TextColor" Value="White" />
+                        <Setter Property="BackgroundColor" Value="#e18c44" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="CallButton" TargetType="Button" >
+                <Style.Triggers>
+                    <Trigger Property="IsPressed" Value="True" TargetType="Button">
+                        <Setter Property="TextColor" Value="White" />
+                        <Setter Property="BackgroundColor" Value="#888888" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="PkButton" TargetType="Button">
+                <Style.Triggers>
+                    <Trigger Property="IsPressed" Value="True" TargetType="Button">
+                        <Setter Property="TextColor" Value="White" />
+                        <Setter Property="BackgroundColor" Value="#ff0000" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.57*"/>
+            <RowDefinition Height="0.57*"/>
+            <RowDefinition Height="0.11*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
+        <Image Source="drawable/logo.png"/>
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Clicked="TodayNavigation_Clicked" x:Name="TodayNavigation" CornerRadius="4" Style="{StaticResource TodayButton}" BackgroundColor="White" ImageSource="Today"  Text="Сегодня" ContentLayout="top,0"/>
+            <Button Clicked="VsNavigation_Clicked" x:Name="VsNavigation" Grid.Column="1" Style="{StaticResource VsButton}" CornerRadius="4" BackgroundColor="White" ImageSource="vs" Text="Встречи" ContentLayout="top,0"/>
+        </Grid>
+        <Grid Grid.Row="2" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Clicked="CallsNavigation_Clicked" x:Name="CallsNavigation" CornerRadius="4" Style="{StaticResource CallButton}" BackgroundColor="White" ImageSource="call" Text="Звонки" ContentLayout="top,0"/>
+            <Button Clicked="PkNavigation_Clicked" x:Name="PkNavigation" CornerRadius="4" Style="{StaticResource PkButton}" BackgroundColor="White" ImageSource="pk" Text="Показ" ContentLayout="top,0" Grid.Column="1"/>
+        </Grid>
+        <Label Grid.Row="3" Margin="15,0,0,0" FontAttributes="Bold" FontSize="18" Text="Добавление нового события:"/>
+        <Grid Grid.Row="4" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Frame CornerRadius="4" Grid.Column="0"/>
+            <Entry  FontSize="12" x:Name="Name"  PlaceholderColor="#888888" Placeholder="Наименование"/>
+            <Frame CornerRadius="4" Grid.Column="1"/>
+            <DatePicker  FontSize="12" x:Name="DateS"  Grid.Column="1"  TextColor="#888888"/>
+        </Grid>
+        <Grid Grid.Row="5" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Frame CornerRadius="4"  Grid.Column="0" />
+            
+            <StackLayout >
+                <Label  FontAttributes="Bold" FontSize="16" HorizontalOptions="Center" Text="Тип события"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Orientation="Horizontal">
+                        <Switch Toggled="CallS_Toggled" x:Name="CallS" Scale="0.6" IsToggled="True" OnColor="#c6c6c6" ThumbColor="#888888"/>
+                        <Label Text="Звонок"  HorizontalOptions="Start" TextColor="#c6c6c6" VerticalOptions="Center" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Grid.Row="1">
+                        <Switch Toggled="VsS_Toggled" x:Name="VsS" Scale="0.6" OnColor="#f5be7d" ThumbColor="#f5b062"/>
+                        <Label Text="Встреча" TextColor="#f5be7d"  HorizontalOptions="Start" VerticalOptions="Center" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Grid.Row="2">
+                        <Switch  Toggled="PkS_Toggled" x:Name="PkS" Scale="0.6"  OnColor="#f06f6f" ThumbColor="#f04848"/>
+                        <Label Text="Показ" TextColor="#f06f6f"  HorizontalOptions="Start" VerticalOptions="Center" FontSize="14" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.7*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Frame CornerRadius="4"/>
+                <Entry Keyboard="Telephone" x:Name="Phone" Placeholder="Телефон"/>
+                <Frame CornerRadius="4" Grid.Row="1"/>
+                <Entry x:Name="FIO" Grid.Row="1" Placeholder="ФИО"/>
+            </Grid>
+        </Grid>
+        <Frame Grid.Row="6" Margin="10,0"/>
+        <Editor Grid.Row="6" Margin="10,0" FontSize="14" x:Name="Comment" Placeholder="О чём напомнить?"/>
+        <Button x:Name="Save" Clicked="Save_Clicked" Text="Добавить" Margin="100,0,100,0" CornerRadius="4" Grid.Row="7"/>
+    </Grid>
+</ContentPage>

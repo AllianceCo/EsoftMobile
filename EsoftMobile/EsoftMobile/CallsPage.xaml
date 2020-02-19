@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EsoftMobile.CallsPage" BackgroundColor="#ece6e6">
+    <StackLayout>
+        <Grid RowSpacing="-15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Button Clicked="Button_Clicked" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#888888" ImageSource="CallArrow" Scale="0.7" Text="Назад" BackgroundColor="Transparent" FontAttributes="Bold" FontSize="25"/>
+            <Label Grid.Row="1" Margin="20,0,0,0" TextColor="#888888" Text="Звонки" FontSize="40"/>
+        </Grid>
+        <ListView x:Name="CallList" ItemSelected="CallList_ItemSelected"  HasUnevenRows="True" ItemsSource="{Binding}" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View >
+                            <StackLayout>
+                                <Grid Margin="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="2*"/>
+                                        <RowDefinition Height="3*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Frame />
+                                    
+                                    <Label Text="{Binding Name}" TextColor="#888888" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Frame CornerRadius="4" Grid.Column="1"/>
+                                    <Label Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}"  TextColor="#888888" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Frame CornerRadius="4"  Grid.Row="1"/>
+                                    <Label  Text="ФИО" TextColor="#888888" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Start"/>
+                                    <Label  Text="{Binding FIO}" TextColor="#888888" Grid.Row="1" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" />
+                                    <Frame CornerRadius="4" Grid.Column="1" Grid.Row="1"/>
+                                    <Label  Text="Номер телефона" TextColor="#888888" Grid.Column="1" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Start"/>
+                                    <Label Text="{Binding Phone}" TextColor="#888888" Grid.Column="1" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Frame CornerRadius="4" Grid.ColumnSpan="2" Grid.Row="2"/>
+                                    <Label Grid.ColumnSpan="2" Grid.Row="2" TextColor="#888888" Text="Текст напоминания" HorizontalOptions="Center" VerticalOptions="Start"/>
+                                    <Label Grid.ColumnSpan="2" Grid.Row="2" TextColor="#888888" Text="{Binding Comment}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+          </StackLayout>
+</ContentPage>
